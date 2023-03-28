@@ -1,8 +1,12 @@
 package sort
 
-import "time"
+import (
+	"time"
 
-func Selection(items []float64) {
+	"golang.org/x/exp/constraints"
+)
+
+func Selection[T constraints.Ordered](items []T) {
 	last := len(items) - 1
 	for i := 0; i < last; i++ {
 		aMin := items[i]
@@ -17,7 +21,7 @@ func Selection(items []float64) {
 	}
 }
 
-func SelectionWithSleep(items []float64, sleepMs int, callback func(), color func(...int)) {
+func SelectionWithSleep[T constraints.Ordered](items []T, sleepMs int, callback func(), color func(...int)) {
 	last := len(items) - 1
 	for i := 0; i < last; i++ {
 		aMin := items[i]

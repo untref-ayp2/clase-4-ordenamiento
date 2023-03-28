@@ -1,8 +1,11 @@
 package sort
 
-import "time"
+import (
+	"golang.org/x/exp/constraints"
+	"time"
+)
 
-func Insertion(items []float64) {
+func Insertion[T constraints.Ordered](items []T) {
 	for i := 1; i < len(items); i++ {
 		value := items[i]
 		j := i - 1
@@ -14,7 +17,7 @@ func Insertion(items []float64) {
 	}
 }
 
-func InsertionWithSleep(items []float64, sleepMs int, callback func(), color func(...int)) {
+func InsertionWithSleep[T constraints.Ordered](items []T, sleepMs int, callback func(), color func(...int)) {
 	for i := 1; i < len(items); i++ {
 		value := items[i]
 		j := i - 1
